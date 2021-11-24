@@ -18,11 +18,13 @@
 const $ = (selector) => document.querySelector(selector);
 
 function App() {
+  // Count update
   const updateMenuCount = () => {
     const menuCount = $("#espresso-menu-list").querySelectorAll("li").length;
     $(".menu-count").innerText = `총 ${menuCount}개`;
   };
 
+  // 메뉴 추가 [변수]
   const addMenuName = () => {
     if ($("#espresso-menu-name").value === "") {
       alert("값을 입력해주세요.");
@@ -55,12 +57,14 @@ function App() {
     $("#espresso-menu-name").value = "";
   };
 
+  // 메뉴 수정 [변수]
   const updateMenuName = (e) => {
     const $menuName = e.target.closest("li").querySelector(".menu-name");
     const updateMenuName = prompt("메뉴명을 수정하세요", $menuName.innerText);
     $menuName.innerText = updateMenuName;
   };
 
+  // 메뉴 제거 [변수]
   const removeMenuName = (e) => {
     if (confirm("정말 삭제하시겠습니까?")) {
       e.target.closest("li").remove();
@@ -68,6 +72,7 @@ function App() {
     }
   };
 
+  // 메뉴 수정, 삭제 [클릭 이벤트]
   $("#espresso-menu-list").addEventListener("click", (e) => {
     if (e.target.classList.contains("menu-edit-button")) {
       updateMenuName(e);
@@ -78,12 +83,15 @@ function App() {
     }
   });
 
+  // 메뉴 전송 기본값 제거 이벤트
   $("#espresso-menu-form").addEventListener("submit", (e) => {
     e.preventDefault();
   });
 
+  // 메뉴 추가 [이벤트]
   $("#espresso-menu-submit-button").addEventListener("click", addMenuName);
 
+  // 메뉴 엔터로 추가 [이벤트]
   $("#espresso-menu-name").addEventListener("keypress", (e) => {
     if (e.key !== "Enter") {
       return;
