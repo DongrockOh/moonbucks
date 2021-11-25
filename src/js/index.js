@@ -25,7 +25,7 @@
 const $ = (selector) => document.querySelector(selector);
 
 function App() {
-  // Count update
+  // Total Count update
   const updateMenuCount = () => {
     const menuCount = $("#espresso-menu-list").querySelectorAll("li").length;
     $(".menu-count").innerText = `총 ${menuCount}개`;
