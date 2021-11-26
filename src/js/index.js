@@ -1,9 +1,9 @@
 // TODO localStorage Read &  Write
 // localStorage에 데이터를 저장하여 새로고침해도 데이터가 남아있게 한다.
-// - [] localStorage에 데이터를 저장한다.
+// - [x] localStorage에 데이터를 저장한다.
 // - [x] 메뉴를 추가할 때
-// - [] 메뉴를 수정할 때
-// - [] 메뉴를 삭제할 때
+// - [x] 메뉴를 수정할 때
+// - [x] 메뉴를 삭제할 때
 // - [] localStorage에 있는 데이터를 읽어온다.
 
 // TODO 카테고리별 메뉴판 관리
@@ -93,6 +93,9 @@ function App() {
   // 메뉴 제거 [변수]
   const removeMenuName = (e) => {
     if (confirm("정말 삭제하시겠습니까?")) {
+      const menuId = e.target.closest("li").dataset.menuId;
+      this.menu.splice(menuId, 1);
+      store.setLocalStorage(this.menu);
       e.target.closest("li").remove();
       updateMenuCount();
     }
